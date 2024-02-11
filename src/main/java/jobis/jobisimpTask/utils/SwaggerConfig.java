@@ -13,17 +13,20 @@ import org.springframework.context.annotation.Configuration;
                 version = "v1"))
 @RequiredArgsConstructor
 
+
 @Configuration
 public class SwaggerConfig {
 
     @Bean
     public GroupedOpenApi chatOpenApi() {
-        String[] paths = {"/v1/**"};
+        String[] paths = {"/szs/**"};
 
         return GroupedOpenApi.builder()
                 .group("회원가입 API v1")
                 .pathsToMatch(paths)
                 .build();
     }
+
+
 }
 
