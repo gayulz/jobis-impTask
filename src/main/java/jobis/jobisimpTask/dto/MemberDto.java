@@ -10,7 +10,7 @@ import lombok.Data;
 @Entity
 @Data
 @Table(name="MEMBER")
-public class Member {
+public class MemberDto {
     @Id
     private String userId;
     private String password;
@@ -18,13 +18,13 @@ public class Member {
     private String regNo;
 
 
-    public Member(String userId, String password, String name, String regNo) {
+    public MemberDto(String userId, String password, String name, String regNo) {
         this.userId = userId;
         this.password = password;
         this.name = name;
         this.regNo = regNo;
     }
 
-    public Member() {
+    public MemberDto() {
     }
 }
