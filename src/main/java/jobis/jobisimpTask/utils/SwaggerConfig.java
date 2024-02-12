@@ -26,7 +26,5 @@ public class SwaggerConfig {
                 .pathsToMatch(paths)
                 .build();
     }
-
-
 }
 
