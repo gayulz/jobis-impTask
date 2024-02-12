@@ -17,8 +17,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/szs")
 public class MemberController {
-
-
     @Autowired
     private MemberService memberService;
 
@@ -32,6 +30,19 @@ public class MemberController {
             return ResponseEntity.ok().body("회원 가입 성공");
         } else {
             return ResponseEntity.badRequest().body("회원 가입 실패");
+        }
+    }
+
+    @Tag(name = "로그인 API")
+    @Operation(summary = "로그인", description = "로그인 성공시 JWT 토큰 발급")
+    @ApiResponse(content = @Content(mediaType = "application/json"))
+    @PostMapping("/login")
+    public ResponseEntity<?> login(@RequestBody MemberDto memberDto) {
+        String token = memberService.login(memberDto);
+        if (token != null) {
+            return ResponseEntity.ok().body(token);
+        } else {
+            return ResponseEntity.badRequest().body("로그인 실패");
         }
     }
 }
