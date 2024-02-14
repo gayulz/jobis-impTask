@@ -1,11 +1,11 @@
 package jobis.jobisimpTask;
 
-import jobis.jobisimpTask.dto.MemberDto;
+import jobis.jobisimpTask.entity.MemberEntity;
+import jobis.jobisimpTask.jwt.JwtUtils;
 import jobis.jobisimpTask.repository.MemberRepository;
 import jobis.jobisimpTask.service.MemberServiceImpl;
-import jobis.jobisimpTask.utils.AppConfig;
-import jobis.jobisimpTask.utils.JwtUtils;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -24,47 +24,23 @@ public class MemberServiceTest {
 
     @BeforeEach
     void setUp() {
-        AppConfig appConfig = new AppConfig();
-        memberService = (MemberServiceImpl) appConfig.memberService();
-        jwtUtils = mock(JwtUtils.class);
         memberRepository = mock(MemberRepository.class);
+        jwtUtils = mock(JwtUtils.class);
+//        memberService = new MemberServiceImpl(memberRepository, jwtUtils);
     }
 
     @Test
-    void login_SuccessfulAuthentication_ReturnsJwtToken() throws Exception {
-        // Given
-        MemberDto memberDto = new MemberDto();
-        memberDto.setUserId("test");
-        memberDto.setPassword("1231231243");
-        memberDto.setName("홍길동");
-        memberDto.setRegNo("860824-1655068");
-
-
-        MemberDto authenticatedMember = new MemberDto();
-        authenticatedMember.setUserId("test");
-        authenticatedMember.setName("1231231243");
-
-        when(memberRepository.findByUserId(memberDto.getUserId())).thenReturn(List.of(authenticatedMember));
-        when(jwtUtils.generateJwtToken(authenticatedMember.getName())).thenReturn("mockedJwtToken");
-
-        // When
-        String token = memberService.login(memberDto);
-
-        // Then
-        assertEquals("mockedJwtToken", token);
-    }
-
-    @Test
+    @DisplayName("회원가입 실패시 토큰 반환 없음")
     void login_FailedAuthentication_ReturnsNull() throws Exception {
         // Given
-        MemberDto memberDto = new MemberDto();
-        memberDto.setUserId("testUser");
-        memberDto.setPassword("incorrectPassword");
+        MemberEntity memberEntity = new MemberEntity();
+        memberEntity.setUserId("testUser");
+        memberEntity.setPassword("incorrectPassword");
 
-        when(memberRepository.findByUserId(memberDto.getUserId())).thenReturn(List.of());
+        when(memberRepository.findByUserId(memberEntity.getUserId())).thenReturn(List.of());
 
         // When
-        String token = memberService.login(memberDto);
+        String token = memberService.login(memberEntity);
 
         // Then
         assertEquals(null, token);

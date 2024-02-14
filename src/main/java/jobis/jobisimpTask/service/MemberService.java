@@ -1,8 +1,8 @@
 package jobis.jobisimpTask.service;
 
-import jobis.jobisimpTask.dto.MemberDto;
+import jobis.jobisimpTask.entity.MemberEntity;
 
 public interface MemberService {
-    public boolean saveMember(MemberDto memberDto);
-    public String login(MemberDto memberDto);
+    public boolean saveMember(MemberEntity memberEntity);
+    public String login(MemberEntity memberEntity);
 }

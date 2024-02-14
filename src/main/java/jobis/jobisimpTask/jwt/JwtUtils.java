@@ -1,4 +1,4 @@
-package jobis.jobisimpTask.utils;
+package jobis.jobisimpTask.jwt;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;

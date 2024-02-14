@@ -1,6 +1,5 @@
 package jobis.jobisimpTask.crypto;
 
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import javax.crypto.Cipher;
@@ -11,9 +10,9 @@ import java.util.Base64;
 @Component
 public class ResidentRegistration {
     private static final String AES = "AES";
-    @Value("${cryptionKey}")
-    private static String KEY;
-//        private static String KEY = "1234567890123456";
+//    @Value("${cryptionKey}")
+//    private static String KEY;
+        private static String KEY = "1234567890123456";
 
     // 주민등록번호 데이터 암호화 메서드
     public static String encrypt(String data) throws Exception {

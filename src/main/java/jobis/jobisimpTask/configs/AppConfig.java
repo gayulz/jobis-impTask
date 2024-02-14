@@ -1,4 +1,4 @@
-package jobis.jobisimpTask.utils;
+package jobis.jobisimpTask.configs;
 
 import jobis.jobisimpTask.service.MemberService;
 import jobis.jobisimpTask.service.MemberServiceImpl;
@@ -13,5 +13,11 @@ public class AppConfig {
     public MemberService memberService(){
         return new MemberServiceImpl();
     }
+
+//    // MemberService 주입 (MemberServiceImpl)
+//    @Bean
+//    public MemberService memberService(MemberRepository memberRepository, JwtUtils jwtUtils){
+//        return new MemberServiceImpl(memberRepository, jwtUtils);
+//    }
 
 }
