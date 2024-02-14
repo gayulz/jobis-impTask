@@ -1,4 +1,5 @@
 package jobis.jobisimpTask.crypto;
+
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
@@ -12,7 +13,7 @@ public class Password {
     private static final String AES = "AES";
     @Value("${cryptionKey}")
     private static String KEY;
-//    private static String KEY = "1234567890123456";
+
 
     // 비밀번호 데이터 암호화 메서드
     public static String encrypt(String data) throws Exception {

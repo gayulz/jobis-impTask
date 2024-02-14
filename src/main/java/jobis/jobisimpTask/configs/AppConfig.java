@@ -1,4 +1,4 @@
-package jobis.jobisimpTask.utils;
+package jobis.jobisimpTask.configs;
 
 import jobis.jobisimpTask.service.MemberService;
 import jobis.jobisimpTask.service.MemberServiceImpl;

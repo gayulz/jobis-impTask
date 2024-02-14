@@ -1,7 +1,7 @@
 package jobis.jobisimpTask;
 
 import jobis.jobisimpTask.controller.MemberController;
-import jobis.jobisimpTask.dto.MemberDto;
+import jobis.jobisimpTask.entity.MemberEntity;
 import jobis.jobisimpTask.service.MemberService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -26,11 +26,11 @@ public class MemberControllerTest {
     @DisplayName("회원가입 테스트 : 회원가입 성공시 200 반환")
     public void testRegisterUserSuccess() {
         // Given
-        MemberDto memberDto = new MemberDto();
-        when(memberService.saveMember(memberDto)).thenReturn(true);
+        MemberEntity memberEntity = new MemberEntity();
+        when(memberService.saveMember(memberEntity)).thenReturn(true);
 
         // When
-        ResponseEntity<?> responseEntity = memberController.registerUser(memberDto);
+        ResponseEntity<?> responseEntity = memberController.registerUser(memberEntity);
 
         // Then
         assertEquals(200, responseEntity.getStatusCodeValue());
@@ -41,11 +41,11 @@ public class MemberControllerTest {
     @DisplayName("회원가입 실패 테스트 : 회원가입 실패시 400 반환")
     public void testRegisterUserFailure() {
         // Given
-        MemberDto memberDto = new MemberDto();
-        when(memberService.saveMember(memberDto)).thenReturn(false);
+        MemberEntity memberEntity = new MemberEntity();
+        when(memberService.saveMember(memberEntity)).thenReturn(false);
 
         // When
-        ResponseEntity<?> responseEntity = memberController.registerUser(memberDto);
+        ResponseEntity<?> responseEntity = memberController.registerUser(memberEntity);
 
         // Then
         assertEquals(400, responseEntity.getStatusCodeValue());

@@ -1,14 +1,12 @@
 package jobis.jobisimpTask.repository;
 
 
-import jobis.jobisimpTask.dto.MemberDto;
+import jobis.jobisimpTask.entity.MemberEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
-
 @Repository
-public interface MemberRepository extends JpaRepository<MemberDto, Long> {
+public interface MemberRepository extends JpaRepository<MemberEntity, Integer> {
     boolean existsByUserId(String userId);
-    List<MemberDto> findByUserId(String userId);
+    MemberEntity findByUserId(String userId);
 }

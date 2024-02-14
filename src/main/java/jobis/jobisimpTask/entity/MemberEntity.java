@@ -1,4 +1,4 @@
-package jobis.jobisimpTask.dto;
+package jobis.jobisimpTask.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -10,21 +10,16 @@ import lombok.Data;
 @Entity
 @Data
 @Table(name="MEMBER")
-public class MemberDto {
+public class MemberEntity {
     @Id
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String userId;
     private String password;
     private String name;
     private String regNo;
+    private String role;
 
 
-    public MemberDto(String userId, String password, String name, String regNo) {
-        this.userId = userId;
-        this.password = password;
-        this.name = name;
-        this.regNo = regNo;
-    }
-
-    public MemberDto() {
+    public MemberEntity() {
     }
 }

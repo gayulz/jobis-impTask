@@ -1,4 +1,4 @@
-package jobis.jobisimpTask.dto;
+package jobis.jobisimpTask.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -9,7 +9,7 @@ import lombok.Data;
 @Data
 @Entity
 @Table(name = "USERDATA")
-public class UserData{
+public class UserDataEntity {
     @Id
     @Column(name="REGNO")
     private String regNo;
@@ -17,11 +17,4 @@ public class UserData{
     @Column(name="name")
     private String name;
 
-    public UserData() {
-    }
-
-    public UserData(String regNo, String name) {
-        this.regNo = regNo;
-        this.name = name;
-    }
 }
